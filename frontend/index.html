@@ -5,17 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HSHN • Registro de Atendimento</title>
     <link rel="stylesheet" href="./styles/globals.css" />
+    <!-- CSP segura (externo apenas). Ajuste connect-src conforme porta da API. -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src http://localhost:3000"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src http://localhost:3000"
     />
   </head>
   <body>
+    <!-- Radios invisíveis controlam o tema (sem JS) -->
+    <input type="radio" name="theme" id="theme-light" hidden checked />
+    <input type="radio" name="theme" id="theme-dark" hidden />
+
     <header class="app-header">
-      <h1>Hospital Santa Helena Norte</h1>
-      <p class="subtitle">
-        Registro inicial de atendimento e status — MVP de aula
-      </p>
+      <div class="container between wrap">
+        <div>
+          <h1>Hospital Santa Helena Norte</h1>
+          <p class="subtitle">Registro inicial de atendimento e status — MVP</p>
+        </div>
+
+        <!-- Switch do tema -->
+        <div class="theme-switch">
+          <label
+            for="theme-light"
+            class="pill"
+            title="Tema claro"
+            aria-label="Tema claro"
+          >
+            <span class="icon">☀</span><span class="txt">Claro</span>
+          </label>
+          <label
+            for="theme-dark"
+            class="pill"
+            title="Tema escuro"
+            aria-label="Tema escuro"
+          >
+            <span class="icon">🌙</span><span class="txt">Escuro</span>
+          </label>
+        </div>
+      </div>
     </header>
 
     <main class="container">
