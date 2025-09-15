@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HSHN • Registro de Atendimento</title>
+    <link rel="stylesheet" href="./styles/globals.css" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src http://localhost:3000"
+    />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Hospital Santa Helena Norte</h1>
+      <p class="subtitle">
+        Registro inicial de atendimento e status — MVP de aula
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2 class="card-title">Novo atendimento</h2>
+        <form id="form-atendimento" novalidate>
+          <div class="grid-2">
+            <label class="field">
+              <span>Nome do paciente</span>
+              <input
+                id="paciente"
+                name="paciente"
+                placeholder="Ex.: Ana Silva"
+                required
+                maxlength="80"
+              />
+            </label>
+            <label class="field">
+              <span>CPF (opcional)</span>
+              <input
+                id="cpf"
+                name="cpf"
+                placeholder="000.000.000-00"
+                inputmode="numeric"
+              />
+            </label>
+          </div>
+
+          <div class="grid-2">
+            <label class="field">
+              <span>Status inicial</span>
+              <select id="status" name="status" required>
+                <option value="">Selecione</option>
+                <option>Triagem</option>
+                <option>Em Atendimento</option>
+                <option>Aguardando Exame</option>
+                <option>Em Exame</option>
+                <option>Aguardando Resultado</option>
+                <option>Internado</option>
+                <option>Alta</option>
+              </select>
+            </label>
+
+            <label class="field" id="wrap-exame" hidden>
+              <span>Tipo de exame (se aplicável)</span>
+              <input
+                id="tipoExame"
+                name="tipoExame"
+                placeholder="Hemograma, Raio-X, etc."
+                maxlength="60"
+              />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Observações (opcional)</span>
+            <textarea
+              id="obs"
+              name="obs"
+              rows="3"
+              maxlength="400"
+              placeholder="Sintomas, achados iniciais..."
+            ></textarea>
+          </label>
+
+          <div class="actions">
+            <button id="btn-submit" type="submit">Registrar</button>
+            <button id="btn-limpar" type="button" class="ghost">Limpar</button>
+          </div>
+
+          <div id="msg" class="msg" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="between">
+          <h2 class="card-title">Atendimentos recentes</h2>
+          <button id="btn-recarregar" class="ghost">Recarregar</button>
+        </div>
+        <div class="table-wrap">
+          <table id="tabela">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Paciente</th>
+                <th>Status</th>
+                <th>Exame</th>
+                <th>Data/Hora</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>MVP didático • Cliente (HTML/CSS/JS) → Servidor (Express)</small>
+    </footer>
+
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
